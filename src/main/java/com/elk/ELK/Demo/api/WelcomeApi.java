@@ -9,7 +9,7 @@ public class WelcomeApi {
 	@GetMapping(value="/api/welcome")
 	public String welcome() {
 		
-		return "Welcome to Spring Boot ELK session";
+		return "Welcome to Spring Boot ELK demo";
 	}
 
 }
