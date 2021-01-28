@@ -1,5 +1,9 @@
 package com.course.practicaljava.server;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,17 @@ public class CarApi {
 	@GetMapping(value = "/random", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Car random() {
 		return carService.generateCar();
+	}
+	
+	@GetMapping(value = "/random-cars", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Car> randomCars() {
+		var result = new ArrayList<Car>();
+
+		for (int i = 0; i < ThreadLocalRandom.current().nextInt(1, 10); i++) {
+			result.add(carService.generateCar());
+		}
+
+		return result;
 	}
 
 }
